@@ -5,6 +5,8 @@ import { Switch, Button } from 'evergreen-ui'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas, faSave, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { getToPathname } from '@remix-run/router';
+import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 
 const blank = 0;
 const FACP = 1500;
@@ -23,7 +25,15 @@ const Estimatortool = () => {
   const [selectedOption1, setSelectedOption1] = useState(0);
   const [markupPercent, setMarkupPercent] = useState(0.3);
 
+  {/* ROW 2 */ }
+  const [price2, setPrice2] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [subtotal2, setSubtotal2] = useState(0);
+  const [markup2, setMarkup2] = useState(0);
+  const [total2, setTotal2] = useState(0);
+  const [selectedOption2, setSelectedOption2] = useState(0);
 
+  const [materialTotal, setMaterialTotal] = useState([]);
 
   function handleOptionChange1(event) {
     let number = parseFloat(event.target.value)
@@ -55,19 +65,10 @@ const Estimatortool = () => {
     }
   }
 
-  const formattedSubtotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(subtotal1);
-  const formattedMarkup = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(markup1);
-  const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total1);
-  const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price1);
 
 
-  {/* ROW 2 */ }
-  const [price2, setPrice2] = useState(0);
-  const [count2, setCount2] = useState(0);
-  const [subtotal2, setSubtotal2] = useState(0);
-  const [markup2, setMarkup2] = useState(0);
-  const [total2, setTotal2] = useState(0);
-  const [selectedOption2, setSelectedOption2] = useState(0);
+
+
 
   function handleOptionChange2(event) {
     let number = parseFloat(event.target.value)
@@ -100,38 +101,79 @@ const Estimatortool = () => {
     }
   }
 
+  {/* TOTAL MATERIAL */ }
+
+  function storeMaterial() {
+    if (materialTotal, selectedOption1, selectedOption2){
+    localStorage.setItem('materialTotal', JSON.stringify(materialTotal));
+    localStorage.setItem('count1', JSON.stringify(count1));
+    localStorage.setItem('count2', JSON.stringify(count2));
+    localStorage.setItem('selectedOption1', JSON.stringify(selectedOption1));
+    localStorage.setItem('selectedOption2', JSON.stringify(selectedOption2));
+    localStorage.setItem('price1', JSON.stringify(price1));
+    localStorage.setItem('price2', JSON.stringify(price2));
+    localStorage.setItem('subtotal1', JSON.stringify(subtotal1));
+    localStorage.setItem('subtotal2', JSON.stringify(subtotal2));
+    localStorage.setItem('markup1', JSON.stringify(markup1));
+    localStorage.setItem('markup2', JSON.stringify(markup2));
+    localStorage.setItem('total1', JSON.stringify(total1));
+    localStorage.setItem('total2', JSON.stringify(total2));
+    
+    }
+  }
+  // useEffect(() => {
+  //   localStorage.setItem('materialTotal', JSON.stringify(materialTotal));
+  // }, []);
+  
+  useEffect(() => {
+ setMaterialTotal(total1 + total2);
+  }, [count1,count2]);
+
+
+  useEffect(() => {
+    const storedMaterial = JSON.parse(localStorage.getItem('materialTotal'));
+    const storedCount1 = JSON.parse(localStorage.getItem('count1'));
+    const storedCount2 = JSON.parse(localStorage.getItem('count2'));
+    const storedSelectedOption1 = JSON.parse(localStorage.getItem('selectedOption1'));
+    const storedSelectedOption2 = JSON.parse(localStorage.getItem('selectedOption2'));
+    const storedPrice1 = JSON.parse(localStorage.getItem('price1'));
+    const storedPrice2 = JSON.parse(localStorage.getItem('price2'));
+    const storedSubtotal1 = JSON.parse(localStorage.getItem('subtotal1'));
+    const storedSubtotal2 = JSON.parse(localStorage.getItem('subtotal2'));
+    const storedMarkup1 = JSON.parse(localStorage.getItem('markup1'));
+    const storedMarkup2 = JSON.parse(localStorage.getItem('markup2'));
+    const storedTotal1 = JSON.parse(localStorage.getItem('total1'));
+    const storedTotal2 = JSON.parse(localStorage.getItem('total2'));
+
+  if (storedMaterial, storedSelectedOption1, storedSelectedOption2) {
+    setCount1(storedCount1)
+    setCount2(storedCount2)
+    setSelectedOption1(storedSelectedOption1)
+    setSelectedOption2(storedSelectedOption2)
+    setPrice1(storedPrice1)
+    setPrice2(storedPrice2)
+    setSubtotal1(storedSubtotal1)
+    setSubtotal2(storedSubtotal2)
+    setMarkup1(storedMarkup1)
+    setMarkup2(storedMarkup2)
+    setTotal1(storedTotal1)
+    setTotal2(storedTotal2)
+
+    setMaterialTotal(storedMaterial)
+  }
+  }, []);
+
+
+
+  const formattedSubtotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(subtotal1);
+  const formattedMarkup = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(markup1);
+  const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total1);
+  const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price1);
 
   const formattedSubtotal2 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(subtotal2);
   const formattedMarkup2 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(markup2);
   const formattedTotal2 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total2);
   const formattedPrice2 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price2);
-
-
-
-  {/* TOTAL MATERIAL */ }
-  const [materialTotal, setMaterialTotal] = useState([]);
-
-  function storeMaterial() {
-    setMaterialTotal(total1 + total2);
-    localStorage.setItem('materialTotal', JSON.stringify(materialTotal));
-
-    }
-
-  // useEffect(() => {
-  //   localStorage.setItem('materialTotal', JSON.stringify(materialTotal));
-  // }, []);
-
-  useEffect(() => {
-    const storedMaterial = JSON.parse(localStorage.getItem('materialTotal'));
-  if (storedMaterial) {
-    setMaterialTotal(storedMaterial)
-  }
-  }, []);
-
-console.log(materialTotal)
-
-
-
 
   const formattedMaterialTotal= new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(materialTotal);
  
@@ -180,12 +222,12 @@ console.log(materialTotal)
             <div className="d-flex flex-row">
 
               <div className="p-0 align-self-center me-1" >
-                <Button margin={0} appearance="primary" intent="success" onClick={handleClick1}>
+                <Button margin={0} appearance="primary" intent="success" onClick={(handleClick1)}>
                   +</Button>
               </div>
 
               <div className="p-0 align-self-center me-1">
-                <Button margin={0} appearance="primary" intent="danger" onClick={minuesClick1}>
+                <Button margin={0} appearance="primary" intent="danger" onClick={(minuesClick1)}>
                   -</Button>
               </div>
 
