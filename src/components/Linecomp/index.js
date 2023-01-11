@@ -9,13 +9,6 @@ import { fas, faSave, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function index({ line }) {
 
-
-  function handleDelLine(e) {
-
-console.log(line)
-
-  }
-
   return (
     <div>
 
@@ -27,7 +20,9 @@ console.log(line)
             <div className="d-flex flex-row">
 
               <div className="p-0 align-self-center me-1" >
-                <Button margin={0} appearance="primary" intent="danger" onClick={(handleDelLine)}>
+                <Button margin={0} appearance="primary" intent="danger" onClick={() => {
+                  console.log(line)
+                }}>
                   -</Button>
               </div>
               <div className="p-0 align-self-center me-1" >

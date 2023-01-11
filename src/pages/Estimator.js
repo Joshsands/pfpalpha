@@ -14,6 +14,7 @@ import { fas, faSave, faPlus } from "@fortawesome/free-solid-svg-icons";
 const LOCAL_STORAGE_KEY = "estimator";
 
 const Pricing = () => {
+
   const [component, setComponent] = useState("componentA");
 
   const [lines, setLines] = useState([]);
@@ -46,10 +47,10 @@ const Pricing = () => {
     lineNameRef.current.value = null;
   }
 
-
-
   return (
     <div>
+      <h1>LABOR</h1>
+
       <Button
         margin={16}
         appearance="primary"
@@ -93,7 +94,7 @@ const Pricing = () => {
 
                 <Input ref={deviceRef} id="device" device="device" />
               </div>
-              </div>
+            </div>
 
           </Box>
 
@@ -114,12 +115,12 @@ const Pricing = () => {
 
           <Box width={1 / 4} px={1}>
             <Label htmlFor="markup">Mark-up</Label>
-            <Input id="markup" markup="markup"  />
+            <Input id="markup" markup="markup" />
           </Box>
 
           <Box width={1 / 4} px={1}>
             <Label htmlFor="total">Total</Label>
-            <Input id="total" total="total"  />
+            <Input id="total" total="total" />
           </Box>
         </Flex>
       </Box>
