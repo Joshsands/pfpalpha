@@ -8,46 +8,58 @@ import { fas, faSave, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function index({ line }) {
+
+
+  function handleDelLine(e) {
+
+console.log(line)
+
+  }
+
   return (
     <div>
-      {line.name}
+
       <Box as="form" onSubmit={(e) => e.preventDefault()} py={3}>
         {/*row 1 */}
         <Flex mx={10} mb={3}>
           <Box width={1 / 4} px={1}>
-            <Label htmlFor="device">Device</Label>
 
+            <div className="d-flex flex-row">
 
-                <Input id="device" device="device" defaultValue="Design" />
+              <div className="p-0 align-self-center me-1" >
+                <Button margin={0} appearance="primary" intent="danger" onClick={(handleDelLine)}>
+                  -</Button>
+              </div>
+              <div className="p-0 align-self-center me-1" >
 
+                <Input id="device" device="device" defaultValue={line.name} />
+              </div>
+            </div>
           </Box>
 
           <Box width={1 / 4} px={1}>
-            <Label htmlFor="qty">QTY</Label>
-            <Input id="qty" qty="qty" defaultValue="0" />
+            <Input id="qty" qty="qty" defaultValue={line.qty} />
           </Box>
 
           <Box width={1 / 4} px={1}>
-            <Label htmlFor="price">Price</Label>
-            <Input id="price" price="price" defaultValue="$1,500.00" />
+            <Input id="price" price="price" defaultValue={line.price} />
           </Box>
 
           <Box width={1 / 4} px={1}>
-            <Label htmlFor="subtotal">Subtotal</Label>
-            <Input id="subtotal" subtotal="subtotal" defaultValue="$1,500.00" />
+            <Input id="subtotal" subtotal="subtotal" defaultValue={line.price * line.qty} />
           </Box>
 
           <Box width={1 / 4} px={1}>
-            <Label htmlFor="markup">Mark-up</Label>
-            <Input id="markup" markup="markup" defaultValue="$450.00" />
+            <Input id="markup" markup="markup" defaultValue={(line.price * line.qty) * 0.3} />
           </Box>
 
           <Box width={1 / 4} px={1}>
-            <Label htmlFor="total">Total</Label>
-            <Input id="total" total="total" defaultValue="$1,950.00" />
+            <Input id="total" total="total" defaultValue={(line.price * line.qty) * 1.3} />
           </Box>
         </Flex>
       </Box>
+
+
     </div>
   );
 }

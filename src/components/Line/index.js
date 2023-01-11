@@ -7,16 +7,11 @@ import { fas, faSave, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import Linecomp from '../Linecomp'
 
-
-
 const Line = ({ lines }) => {
-
-
     return (
         lines.map( line => {
             return <Linecomp key={line.id} line={line} />
         })
-
     );
   };
   
