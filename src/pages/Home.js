@@ -16,20 +16,22 @@ const Home = () => {
   const [company, setCompany] = useState();
   const [phone, setPhone] = useState();
 
-  async function addNewData() {
-  try {
-    const docRef = await addDoc(collection(db, "users"), {
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
+//   async function addNewData() {
+//   try {
+//     const docRef = await addDoc(collection(db, "users"), {
+//       first: "Ada",
+//       last: "Lovelace",
+//       born: 1815
+//     });
+//     console.log("Document written with ID: ", docRef.id);
+//   } catch (e) {
+//     console.error("Error adding document: ", e);
+//   }
+// }
 
-  async function handleSubmit() {
+  async function handleSubmit(e) {
+    e.preventDefault()
+    console.log('123')
 await setDoc(doc(db, 'contact', 'form'), {
       company: company,
       name: name,
@@ -262,7 +264,7 @@ await setDoc(doc(db, 'contact', 'form'), {
               <label for="contact-message">Message</label>
               <textarea id="contact-message" placeholder="Message"></textarea>
 
-              <button type="submit" onClick={addNewData()}>Submit</button>
+              <button type="submit">Submit</button>
             </form>
           </div>
 
