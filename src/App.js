@@ -8,13 +8,13 @@ import Shop from "./pages/Shop";
 import Estimator from "./pages/Estimator";
 import Service from "./pages/Service";
 import Portfolio from "./pages/Portfolio";
-import Login from "./pages/Login";
+import Login from "./pages/login";
 import Navigation from "./components/Nav";
 import Dashboard from "./pages/Dashboard";
 import { AuthProvider } from "./contexts/AuthContext";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdateProfile from "./pages/UpdateProfile";
-// import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -26,7 +26,9 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/dashboard" element={
+<PrivateRoute>
                 <Dashboard />
+                </PrivateRoute>
               } />
               <Route path="/shop" element={<Shop />} />
               <Route path="/estimator" element={<Estimator />} />

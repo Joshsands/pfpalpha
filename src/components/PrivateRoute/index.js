@@ -1,16 +1,16 @@
-import React from "react"
-import { Route, Navigate } from "react-router-dom"
-import { useAuth } from "../../contexts/AuthContext"
 
-export default function PrivateRoute({ component: Component, ...rest }) {
-  const { currentUser } = useAuth()
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
-  return (
-    <Route
-      {...rest}
-      render={props => {
-        return currentUser ? <Component {...props} /> : <Navigate to="/login" />
-      }}
-    ></Route>
-  )
-}
+const ProtectedRoute = ({ children }) => {
+  const { currentUser } = useAuth();
+  if (!currentUser) {
+console.log( currentUser )
+
+    return <Navigate to='/' />;
+  }
+  return children;
+};
+
+export default ProtectedRoute;

@@ -29,13 +29,13 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/shop">
               Shop
             </Nav.Link>
-            <Nav.Link as={Link} to="/Estimator">
+            <Nav.Link as={Link} to="/estimator">
               Estimator
             </Nav.Link>
-            <Nav.Link as={Link} to="/Service">
+            <Nav.Link as={Link} to="/service">
               Service
             </Nav.Link>
-            <Nav.Link as={Link} to="/Portfolio">
+            <Nav.Link as={Link} to="/portfolio">
               Portfolio
             </Nav.Link>
             <Nav.Link as={Link} to="/login">
