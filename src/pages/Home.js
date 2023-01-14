@@ -1,11 +1,34 @@
-import * as React from "react";
+import react, { useState } from 'react';
 import robImage from "../assets/images/roblippman.jpg";
 import joshimage from "../assets/images/joshsands.jpg";
 import stephenimage from "../assets/images/stephenfuller.jpg";
 import briimage from "../assets/images/bri.jpg";
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, Alert } from "react-bootstrap";
+import { doc, setDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase"
 
 const Home = () => {
+
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  // const [message, setMessage] = useState();
+  const [company, setCompany] = useState();
+  const [phone, setPhone] = useState();
+  const userCollection = collection(db, "contacts")
+
+
+  const handleSubmit = () => {
+addDoc(userCollection, {
+      company: company,
+      name: name,
+      email: email,
+      phone: phone,
+    })
+
+  }
+
+
   return (
     <div>
       <section class="hero">
@@ -23,14 +46,16 @@ const Home = () => {
             call
           </p>
 
-          <form>
-            <label for="name">Company Name:</label>
+          <form onSubmit={handleSubmit}>
+            <label for="company">Company Name:</label>
             <input
               type="text"
               placeholder="Company Name"
-              name="name"
-              id="name"
+              name="company"
+              id="company"
               class="form-input"
+              value={company}
+              onChange={(e) => { setCompany(e.target.value)}}
             />
             <label for="name">Enter your name:</label>
             <input
@@ -39,6 +64,8 @@ const Home = () => {
               name="name"
               id="name"
               class="form-input"
+              value={name}
+              onChange={(e) => { setName(e.target.value)}}
             />
             <label for="email">Enter email address:</label>
             <input
@@ -47,6 +74,8 @@ const Home = () => {
               name="email"
               id="email"
               class="form-input"
+              value={email}
+              onChange={(e) => {setEmail(e.target.value)}}
             />
             <label for="phone">Enter a telephone number:</label>
             <input
@@ -55,9 +84,12 @@ const Home = () => {
               name="phone"
               id="phone"
               class="form-input"
+              value={phone}
+              onChange={(e) => {setPhone(e.target.value)}}
+
             />
 
-            <button type="submit">REQUEST QUOTE</button>
+            <button type="submit" >REQUEST QUOTE</button>
           </form>
         </div>
       </section>
@@ -70,37 +102,37 @@ const Home = () => {
           <p>
             <ListGroup>
 
-            <ListGroup.Item className="text-danger">At Primary Fire Protection, our goal is to ensure safety of both
-            your occupants and property. Our fire protection / life safety
-            contracting delivers the highest quality control standards by
-            continuously investing in our technicians' knowledge and skill sets.
-            </ListGroup.Item>
+              <ListGroup.Item className="text-danger">At Primary Fire Protection, our goal is to ensure safety of both
+                your occupants and property. Our fire protection / life safety
+                contracting delivers the highest quality control standards by
+                continuously investing in our technicians' knowledge and skill sets.
+              </ListGroup.Item>
 
-            <ListGroup.Item className="text-danger">
-            Our first-rate, trade specific, expertise delivers our clients peace
-            of mind knowing our products will save lives and property as they
-            were designed.
-            </ListGroup.Item>
+              <ListGroup.Item className="text-danger">
+                Our first-rate, trade specific, expertise delivers our clients peace
+                of mind knowing our products will save lives and property as they
+                were designed.
+              </ListGroup.Item>
 
-            <ListGroup.Item className="text-danger">
-            Our clients experience minimal
-            installation/inspection downtimes, and lower overall labor costs
-            delivering our customers the best possible value.
-            </ListGroup.Item>
+              <ListGroup.Item className="text-danger">
+                Our clients experience minimal
+                installation/inspection downtimes, and lower overall labor costs
+                delivering our customers the best possible value.
+              </ListGroup.Item>
 
-            <ListGroup.Item className="text-danger">
-            Our protective electronic fire detection and alarm systems are designed by Licensed
-            Alarm Planning Superintendents, and certified by NICET/State
-            licensed technicians. We are well versed in a wide range of
-            compliance codes, and maintain close working relationships with
-            Local, County, Municipal, State, and National authorities to ensure
-            that all codes and methods remain current.
-            </ListGroup.Item>
+              <ListGroup.Item className="text-danger">
+                Our protective electronic fire detection and alarm systems are designed by Licensed
+                Alarm Planning Superintendents, and certified by NICET/State
+                licensed technicians. We are well versed in a wide range of
+                compliance codes, and maintain close working relationships with
+                Local, County, Municipal, State, and National authorities to ensure
+                that all codes and methods remain current.
+              </ListGroup.Item>
 
-            <ListGroup.Item className="text-danger">
-            Readily available and
-            customer oriented, we provide 24/7 service.
-            </ListGroup.Item>
+              <ListGroup.Item className="text-danger">
+                Readily available and
+                customer oriented, we provide 24/7 service.
+              </ListGroup.Item>
 
             </ListGroup>
           </p>
@@ -132,7 +164,7 @@ const Home = () => {
           </article>
 
           <article class="trainer">
-          <img src={stephenimage} alt="Stephen Fuller" />
+            <img src={stephenimage} alt="Stephen Fuller" />
             <div class="trainer-bio">
               <h3>Stephen Fuller</h3>
               <h4>Co-Owner / Service</h4>
@@ -149,7 +181,7 @@ const Home = () => {
           </article>
 
           <article class="trainer">
-          <img src={joshimage} alt="Josh Sands" />
+            <img src={joshimage} alt="Josh Sands" />
             <div class="trainer-bio">
               <h3 class="trainer-name">Josh Sands</h3>
               <h4 class="trainer-name">Sales / Design</h4>
@@ -167,7 +199,7 @@ const Home = () => {
           </article>
 
           <article class="trainer">
-          <img src={briimage} alt="Brehanna McMorris" />
+            <img src={briimage} alt="Brehanna McMorris" />
             <div class="trainer-bio">
               <h3 class="trainer-name">Brehanna McMorris</h3>
               <h4 class="trainer-name">Project Coordinator</h4>
@@ -189,40 +221,40 @@ const Home = () => {
 
       <section id="reach-out" class="contact">
         <div class="flex-row">
-        <h2 class="section-title secondary-border">Reach Out</h2>
+          <h2 class="section-title secondary-border">Reach Out</h2>
         </div>
         <div class="contact-info">
-            
-            <div>
-                <h3>Primary Fire Protection</h3>
-                <p>
-                  Any questions project or service specific questions?
-                  <br />
-                  Let us know and we'll be happy to talk to you!
-                </p>
-                <address>
-                    Primary Fire Protection, LLC.<br/>
-                    5204 Anaheim Ave <br/>
-                    Pflugerville, TX 78660<br/>
-                    P: 512-554-5803 <br/>
-                    E: <a href="mailto:estimating@primaryfirepro.com">estimating@primaryfirepro.com</a>
-                  </address>
-                </div>
 
-        <div class="contact-form">
+          <div>
+            <h3>Primary Fire Protection</h3>
+            <p>
+              Any questions project or service specific questions?
+              <br />
+              Let us know and we'll be happy to talk to you!
+            </p>
+            <address>
+              Primary Fire Protection, LLC.<br />
+              5204 Anaheim Ave <br />
+              Pflugerville, TX 78660<br />
+              P: 512-554-5803 <br />
+              E: <a href="mailto:estimating@primaryfirepro.com">estimating@primaryfirepro.com</a>
+            </address>
+          </div>
+
+          <div class="contact-form">
             <h3>Contact Us</h3>
             <form>
-               <label for="contact-name">Your Name</label>
-               <input type="text" id="contact-name" placeholder="Your Name" />
-          
-               <label for="contact-message">Message</label>
-               <textarea id="contact-message" placeholder="Message"></textarea>
-          
-               <button type="submit">Submit</button>
-              </form>
-        </div>
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" placeholder="Your Name" />
 
-        {/* <iframe
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" placeholder="Message"></textarea>
+
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+
+          {/* <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.1079747227936!2d-120.42364418397035!3d37.92790791110593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8090c49129b6ac57%3A0xb56c7eb95a2cd8bd!2sMain%20St%2C%20California%2095327!5e0!3m2!1sen!2sus!4v1616426329495!5m2!1sen!2sus"
             style="border:0;" 
             allowfullscreen=""
@@ -230,7 +262,7 @@ const Home = () => {
         </iframe> */}
 
         </div>
-    </section>
+      </section>
 
     </div>
   );
