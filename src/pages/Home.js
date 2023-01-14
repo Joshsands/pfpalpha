@@ -5,7 +5,7 @@ import stephenimage from "../assets/images/stephenfuller.jpg";
 import briimage from "../assets/images/bri.jpg";
 import { ListGroup, Alert } from "react-bootstrap";
 import { doc, setDoc } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 import { db } from "../firebase"
 
 const Home = () => {
@@ -15,11 +15,10 @@ const Home = () => {
   // const [message, setMessage] = useState();
   const [company, setCompany] = useState();
   const [phone, setPhone] = useState();
-  const userCollection = collection(db, "contacts")
 
 
-  const handleSubmit = () => {
-addDoc(userCollection, {
+  async function handleSubmit() {
+await setDoc(doc(db, 'contact', 'form'), {
       company: company,
       name: name,
       email: email,
@@ -28,6 +27,7 @@ addDoc(userCollection, {
 
   }
 
+  
 
   return (
     <div>
