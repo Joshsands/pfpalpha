@@ -5,7 +5,7 @@ import stephenimage from "../assets/images/stephenfuller.jpg";
 import briimage from "../assets/images/bri.jpg";
 import { ListGroup, Alert } from "react-bootstrap";
 import { doc, setDoc } from "firebase/firestore";
-import { collection } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase"
 
 const Home = () => {
@@ -16,6 +16,18 @@ const Home = () => {
   const [company, setCompany] = useState();
   const [phone, setPhone] = useState();
 
+  async function addNewData() {
+  try {
+    const docRef = await addDoc(collection(db, "users"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
 
   async function handleSubmit() {
 await setDoc(doc(db, 'contact', 'form'), {
@@ -250,7 +262,7 @@ await setDoc(doc(db, 'contact', 'form'), {
               <label for="contact-message">Message</label>
               <textarea id="contact-message" placeholder="Message"></textarea>
 
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={addNewData()}>Submit</button>
             </form>
           </div>
 
