@@ -5,7 +5,10 @@ import block27 from "../assets/images/block27.jpg"
 import building3 from "../assets/images/building3.jpg"
 import { Card } from 'react-bootstrap'
 
+// const isSmallScreen = useMediaQuery({ maxWidth: 600 })
+
 class PortfolioPage extends Component {
+
 
   constructor(props) {
     super(props);
@@ -36,13 +39,16 @@ class PortfolioPage extends Component {
     };
   }
 
+
+  
   render() {
 
+    
     return (
       <Grid container spacing={1}>
         {this.state.projects.map((project) => (
-          <Grid item xs={12} sm={12} md={12} key={project.id} align="center">
-            <Card className="w-50">
+          <Grid item xs={12} sm={6} md={6} key={project.id} align="center">
+            <Card className="w-100">
               <Card.Img variant="top" src={project.image} alt={'Tesla Giga Factory Texas'} />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">

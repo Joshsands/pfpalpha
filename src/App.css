@@ -585,5 +585,8 @@ section {
   .contact-form {
     order: 3;
   }
+  .large-pictures {
+    width: 100%;
+  }
 }
 
