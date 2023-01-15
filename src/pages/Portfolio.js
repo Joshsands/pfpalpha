@@ -31,7 +31,7 @@ class PortfolioPage extends Component {
         {
           id: 3,
           name: "Austin United States Courthouse",
-          description: "Value engineering : In order to achieve the best outcome for a project within the constraints of budget and time, it is important to evaluate different options and alternatives for materials, systems and methods.",
+          description: "Value engineering: In order to achieve the best outcome for a project within the constraints of budget and time, it is important to evaluate different options and alternatives for materials, systems and methods.",
           image: building3,
           link: "https://courtsweb.gsa.gov/courthouse/austin-united-states-courthouse"
         },

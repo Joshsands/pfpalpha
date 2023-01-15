@@ -591,5 +591,8 @@ section {
   .linksize {
     font-size: 2.5vw;
     }
+    .resize {
+      width: 100%;
+    }
 }
 

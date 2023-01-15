@@ -250,8 +250,8 @@ await setDoc(doc(db, 'contact', 'form'), {
               Primary Fire Protection, LLC.<br />
               5204 Anaheim Ave <br />
               Pflugerville, TX 78660<br />
-              P: 512-554-5803 <br />
-              E: <a href="mailto:estimating@primaryfirepro.com">estimating@primaryfirepro.com</a>
+              512-554-5803 <br />
+              <a href="mailto:estimating@primaryfirepro.com">estimating@primaryfirepro.com</a>
             </address>
           </div>
 
