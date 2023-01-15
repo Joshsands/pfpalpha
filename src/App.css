@@ -479,6 +479,26 @@ section {
     height: 50%;
   }
 
+  @media screen and (max-width: 2560px) {
+    .hero-form {
+      width: 30%;
+    }
+
+
+  }
+
+  @media screen and (max-width: 1470px) {
+    .trainer {
+      flex: 0 70%;
+    }
+   .hero-form {
+      width: 50%;
+    }
+
+  }
+
+
+
   /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
 @media screen and (max-width: 980px) {
   header {

@@ -3,6 +3,7 @@ import { Grid, Typography, CardContent, CardActions, Button } from '@mui/materia
 import tesla from "../assets/images/tesla.jpg"
 import block27 from "../assets/images/block27.jpg"
 import building3 from "../assets/images/building3.jpg"
+import rio from "../assets/images/rio.png"
 import { Card } from 'react-bootstrap'
 
 // const isSmallScreen = useMediaQuery({ maxWidth: 600 })
@@ -35,6 +36,13 @@ class PortfolioPage extends Component {
           image: building3,
           link: "https://courtsweb.gsa.gov/courthouse/austin-united-states-courthouse"
         },
+        {
+          id: 4,
+          name: "RIO Austin",
+          description: "We offer a wide range of fire alarm services, including installation, inspection, and maintenance of fire alarms. Our team of certified and experienced technicians are available 24/7 to respond to any emergencies. We use state-of-the-art technology and equipment to ensure that your fire alarms are always in proper working condition. Additionally, we offer competitive pricing and flexible scheduling to fit your needs. Trust us to keep your property safe.",
+          image: rio,
+          link: "https://6street.com/listing/rio-austin/"
+        },
       ]
     };
   }
@@ -48,9 +56,9 @@ class PortfolioPage extends Component {
       <Grid container spacing={1}>
         {this.state.projects.map((project) => (
           <Grid item xs={12} sm={6} md={6} key={project.id} align="center">
-            <Card className="w-100">
+            <Card className="w-100 h-100">
               <Card.Img variant="top" src={project.image} alt={'Tesla Giga Factory Texas'} />
-              <CardContent>
+              <CardContent className=''>
                 <Typography gutterBottom variant="h5" component="h2">
                   {project.name}
                 </Typography>
