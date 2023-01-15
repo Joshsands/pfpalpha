@@ -15,26 +15,34 @@ const Login = () => {
   return (
 
 <>
-    <Container className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: '100vh' }}
-    >
+    <Container className='w-50'>
 
-      <div className="w-100" style={{ maxWidth: '400px' }}>
+      <div className="w-100">
       {component === "componentA" && <Register />}
       {component === "componentB" && <Signin />}
       </div>
-    </Container>
 
-    <div className="w-100 text-center mt-2">
+
+      <div className="w-100 text-center mt-2">
       <Link to="/forgot-password">Forgot Password?</Link>
     </div>
 
+
     <div className="w-100 text-center mt-2">
             Already have an account?
-            <Button onClick={() => setComponent("componentB")}>Login</Button>
-            Don't have an account?
-            <Button onClick={() => setComponent("componentA")}>Signup</Button>
+            <Button className="m-2" onClick={() => setComponent("componentB")}>Login</Button>
         </div>
+
+    <div className="w-100 text-center mt-2">
+
+            Don't have an account?
+            <Button variant="success" className="m-2" onClick={() => setComponent("componentA")}> Signup</Button>
+        </div>
+
+
+    </Container>
+
+
 
         </>
   );
