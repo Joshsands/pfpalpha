@@ -1,10 +1,15 @@
 import * as React from "react";
+import Appointment from "../components/Appointment"
+import { Container, Card } from 'react-bootstrap'
 
 const Service = () => {
   return (
-    <div>
-      THIS IS THE SERVICE PAGE
-    </div>
+    <>
+      <Card className="align-items-center m-3">
+      <h1>Book Your Appointment</h1>
+      <Appointment />
+      </Card>
+    </>
   );
 };
 

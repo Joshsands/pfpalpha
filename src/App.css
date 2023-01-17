@@ -15,6 +15,7 @@
 body {
     color: var(--tertiary-color);
     font-family: Helvetica, Arial, sans-serif;
+    background-color: #f8f9fa;
   }
 
 .linksize {
@@ -410,7 +411,7 @@ section {
   }
 
   .contact-info div {
-    color: white;
+    color: #f8f9fa;
   }
 
   .contact-info h3 {
