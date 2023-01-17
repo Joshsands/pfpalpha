@@ -1,6 +1,6 @@
 import * as React from "react";
 import Appointment from "../components/Appointment"
-import { Container, Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 
 const Service = () => {
   return (
