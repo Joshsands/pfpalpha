@@ -1,6 +1,6 @@
  /* sets all margins and boarders to 0 */
  :root {
-  --primary-color: #dc3545;
+  --primary-color: #f8f9fa;
   --secondary-color: #332D2D;
   --tertiary-color: #54B4D3;
 }
@@ -120,7 +120,7 @@ section {
 }
 
 .hero-form {
-    background-color: #dc3545;
+    background-color: #0d6efd;
     padding: 20px;
     color: var(--secondary-color);
     border-style: solid;
@@ -149,7 +149,7 @@ section {
 }
 
 .hero-form button:hover {
-  background-color: var(--tertiary-color);  
+  background-color: #d95524;  
 }
 
 .hero-form h3 {

@@ -4,7 +4,7 @@ import tesla from "../assets/images/tesla.jpg"
 import block27 from "../assets/images/block27.jpg"
 import building3 from "../assets/images/building3.jpg"
 import rio from "../assets/images/rio.png"
-import { Card } from 'react-bootstrap'
+import { Card, CardGroup } from 'react-bootstrap'
 
 // const isSmallScreen = useMediaQuery({ maxWidth: 600 })
 
@@ -56,9 +56,10 @@ class PortfolioPage extends Component {
       <Grid container spacing={1}>
         {this.state.projects.map((project) => (
           <Grid item xs={12} sm={6} md={6} key={project.id} align="center">
-            <Card className="w-100 h-100">
-              <Card.Img variant="top" src={project.image} alt={'Tesla Giga Factory Texas'} />
-              <CardContent className=''>
+            {/* <CardGroup> */}
+            <Card className="card w-100 h-100 align-center align-items-center">
+              <Card.Img variant="top" src={project.image} style={{ maxHeight:200, maxWidth:500 }} alt={'Fire Alarm Projects'} />
+              <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   {project.name}
                 </Typography>
@@ -72,6 +73,7 @@ class PortfolioPage extends Component {
                 </Button>
               </CardActions>
             </Card>
+            {/* </CardGroup> */}
           </Grid>
         ))}
       </Grid>
