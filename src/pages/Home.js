@@ -29,8 +29,14 @@ const Home = () => {
 
   const usersCollectionRef = collection(db, "users");
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+e.preventDefault()
+
     await addDoc(usersCollectionRef, { name: name, company: company, email: email, phone: phone });
+    setName('')
+    setEmail('')
+    setCompany('')
+    setPhone('')
   };
 
 //   async function addNewData() {
@@ -58,14 +64,14 @@ const Home = () => {
 
 //   }
 
-useEffect(() => {
-  const getUsers = async () => {
-    const data = await getDocs(usersCollectionRef);
-    setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
+// useEffect(() => {
+//   const getUsers = async () => {
+//     const data = await getDocs(usersCollectionRef);
+//     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+//   };
 
-  getUsers();
-}, []);
+  // getUsers();
+// }, []);
   
 
   return (
@@ -85,7 +91,7 @@ useEffect(() => {
             call
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <label for="company">Company Name:</label>
             <input
               type="text"
@@ -128,7 +134,7 @@ useEffect(() => {
 
             />
 
-            <button type="submit" onClick={handleSubmit}>REQUEST QUOTE</button>
+            <button type="submit">REQUEST QUOTE</button>
           </form>
         </div>
       </section>
