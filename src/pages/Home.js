@@ -4,8 +4,15 @@ import joshimage from "../assets/images/joshsands.jpg";
 import stephenimage from "../assets/images/stephenfuller.jpg";
 import briimage from "../assets/images/bri.jpg";
 import { ListGroup, Alert } from "react-bootstrap";
-import { doc, setDoc } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { setDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../firebase"
 
 const Home = () => {
@@ -15,6 +22,13 @@ const Home = () => {
   // const [message, setMessage] = useState();
   const [company, setCompany] = useState();
   const [phone, setPhone] = useState();
+
+
+  const usersCollectionRef = collection(db, "users");
+
+  const handleSubmit = async () => {
+    await addDoc(usersCollectionRef, { name: name, company: company, email: email, phone: phone });
+  };
 
 //   async function addNewData() {
 //   try {
@@ -29,17 +43,17 @@ const Home = () => {
 //   }
 // }
 
-  async function handleSubmit(e) {
-    e.preventDefault()
-    console.log('123')
-await setDoc(doc(db, 'contact', 'form'), {
-      company: company,
-      name: name,
-      email: email,
-      phone: phone,
-    })
+//   async function handleSubmit(e) {
+//     e.preventDefault()
+//     console.log('123')
+// await setDoc(doc(db, 'contact', 'form'), {
+//       company: company,
+//       name: name,
+//       email: email,
+//       phone: phone,
+//     })
 
-  }
+//   }
 
   
 

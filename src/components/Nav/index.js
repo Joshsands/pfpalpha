@@ -26,11 +26,11 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/shop">
+            {/* <Nav.Link as={Link} to="/shop">
               Shop
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link as={Link} to="/estimator">
-              Estimator
+              Quote
             </Nav.Link>
             <Nav.Link as={Link} to="/service">
               Service
