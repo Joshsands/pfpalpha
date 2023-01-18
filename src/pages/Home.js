@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from "react";
+
 import robImage from "../assets/images/roblippman.jpg";
 import joshimage from "../assets/images/joshsands.jpg";
 import stephenimage from "../assets/images/stephenfuller.jpg";
@@ -17,11 +18,13 @@ import { db } from "../firebase"
 
 const Home = () => {
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   // const [message, setMessage] = useState();
-  const [company, setCompany] = useState();
-  const [phone, setPhone] = useState();
+  const [company, setCompany] = useState('');
+  const [phone, setPhone] = useState('');
+  const [users, setUsers] = useState([]);
+
 
 
   const usersCollectionRef = collection(db, "users");
@@ -55,6 +58,14 @@ const Home = () => {
 
 //   }
 
+useEffect(() => {
+  const getUsers = async () => {
+    const data = await getDocs(usersCollectionRef);
+    setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  getUsers();
+}, []);
   
 
   return (
@@ -74,7 +85,7 @@ const Home = () => {
             call
           </p>
 
-          <form onSubmit={handleSubmit}>
+          <form>
             <label for="company">Company Name:</label>
             <input
               type="text"
@@ -117,7 +128,7 @@ const Home = () => {
 
             />
 
-            <button type="submit" >REQUEST QUOTE</button>
+            <button type="submit" onClick={handleSubmit}>REQUEST QUOTE</button>
           </form>
         </div>
       </section>
@@ -129,6 +140,9 @@ const Home = () => {
         <div class="flex-row">
           <p>
             <ListGroup className='list-group list-group-flush'>
+
+
+
 
               <ListGroup.Item className="text-dark  text-center align-items-center">At Primary Fire Protection, our goal is to ensure safety of both
                 your occupants and property. Our fire protection / life safety

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
+import DisplpayComments from "../components/DisplayComments"
 
 export default function Dashboard() {
   const [error, setError] = useState("")
@@ -22,6 +23,7 @@ export default function Dashboard() {
   return (
     <>
       <Card>
+        <DisplpayComments />
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}

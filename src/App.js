@@ -26,13 +26,21 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/dashboard" element={
-<PrivateRoute>
-                <Dashboard />
+                <PrivateRoute>
+                  <Dashboard />
                 </PrivateRoute>
               } />
               <Route path="/shop" element={<Shop />} />
-              <Route path="/estimator" element={<Estimator />} />
-              <Route path="/service" element={<Service />} />
+                <Route path="/estimator" element={
+                <PrivateRoute>
+
+                <Estimator />
+                </PrivateRoute>
+
+                } />
+
+                <Route path="/service" element={<Service />} />
+
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/login" element={<Login />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />

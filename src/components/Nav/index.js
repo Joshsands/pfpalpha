@@ -8,8 +8,14 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import logo from "../../assets/images/logo.png";
+import { useAuth } from "../../contexts/AuthContext"
+
 
 const Navigation = () => {
+  const { currentUser } = useAuth()
+
+
+
   return (
     <>
       <Navbar bg="light" variant="light">
@@ -23,6 +29,12 @@ const Navigation = () => {
           </Navbar.Brand>
 
           <Nav className="mb-0 linksize">
+
+          {currentUser &&  <Nav.Link as={Link} to="/dashboard">
+              Profile
+            </Nav.Link>}
+
+
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
