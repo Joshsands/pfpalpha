@@ -77,32 +77,32 @@ e.preventDefault()
   return (
     <div>
       <section class="hero">
-        <div class="hero-cta">
+        {/* <div class="hero-cta">
           <h2>NEED A QUOTE?</h2>
           <p fontcolor="blue">
             We provide all types of fire protection system quotes to general
             contractors and building owners. Reach out to us today for a quote!
           </p>
-        </div>
+        </div> */}
         <div class="hero-form">
-          <h3>Get a Quote Today!</h3>
+          <h3>FIND YOUR FIRE PROTECTION PLANS!</h3>
           <p>
-            Fill out the form below and one of our estimators will give you a
-            call
+            Enter an Austin, Texas address to see avilability of fire protection plans.
           </p>
 
           <form onSubmit={handleSubmit}>
-            <label for="company">Company Name:</label>
+            <label for="company">Street Address</label>
             <input
-              type="text"
-              placeholder="Company Name"
-              name="company"
-              id="company"
+              type="address"
+              placeholder="e.g. 6310 Wilhelmina Delco Dr"
+              name="address"
+              id="address"
               class="form-input"
               value={company}
               onChange={(e) => { setCompany(e.target.value)}}
             />
-            <label for="name">Enter your name:</label>
+
+            {/* <label for="name">Enter your name:</label>
             <input
               type="text"
               placeholder="Your Name"
@@ -132,10 +132,11 @@ e.preventDefault()
               value={phone}
               onChange={(e) => {setPhone(e.target.value)}}
 
-            />
+            /> */}
 
-            <button type="submit">REQUEST QUOTE</button>
+            <button type="submit">Submit</button>
           </form>
+
         </div>
       </section>
 

@@ -482,7 +482,7 @@ section {
 
   @media screen and (max-width: 2560px) {
     .hero-form {
-      width: 30%;
+      width: 50%;
     }
 
 
@@ -493,7 +493,7 @@ section {
       flex: 0 70%;
     }
    .hero-form {
-      width: 50%;
+      width: 75%;
     }
 
   }
