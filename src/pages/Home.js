@@ -190,11 +190,11 @@ e.preventDefault()
       <section id="your-trainers">
         <div class="flex-row">
           <h2 class="section-title primary-border">
-            Meet Your Fire Protection Experts
+            Meet Your Designer
           </h2>
         </div>
         <div class="trainers">
-          <article class="trainer">
+          {/* <article class="trainer">
             <img src={robImage} alt="Robert Lippman" />
             <div class="trainer-bio">
               <h3>Robert Lippman</h3>
@@ -226,7 +226,7 @@ e.preventDefault()
                 suscipit amet quis repellat!
               </p>
             </div>
-          </article>
+          </article> */}
 
           <article class="trainer">
             <img src={joshimage} alt="Josh Sands" />
@@ -238,15 +238,12 @@ e.preventDefault()
               </h4>
 
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi
-                neque animi quo cupiditate commodi saepe culpa sed itaque velit
-                maiores optio dolorem excepturi aperiam dolores, voluptatibus
-                suscipit amet quis repellat!
+                10-years in the fire alarm industry, selling, managing and designing a wide range of fire alarm projects.
               </p>
             </div>
           </article>
 
-          <article class="trainer">
+          {/* <article class="trainer">
             <img src={briimage} alt="Brehanna McMorris" />
             <div class="trainer-bio">
               <h3 class="trainer-name">Brehanna McMorris</h3>
@@ -262,7 +259,7 @@ e.preventDefault()
                 suscipit amet quis repellat!
               </p>
             </div>
-          </article>
+          </article> */}
 
         </div>
       </section>
@@ -274,18 +271,18 @@ e.preventDefault()
         <div class="contact-info">
 
           <div>
-            <h3>Primary Fire Protection</h3>
+            <h3>FireScale Design</h3>
             <p>
               Any project or service specific questions?
               <br />
               Let us know and we'll be happy to talk to you!
             </p>
             <address>
-              Primary Fire Protection, LLC.<br />
-              5204 Anaheim Ave <br />
-              Pflugerville, TX 78660<br />
+              Firescale Design<br />
+              404 Perryville Loop <br />
+              Liberty Hill, TX 78642<br />
               512-554-5803 <br />
-              <a href="mailto:estimating@primaryfirepro.com">estimating@primaryfirepro.com</a>
+              <a href="mailto:estimating@primaryfirepro.com">josh@firescaledesign.com</a>
             </address>
           </div>
 

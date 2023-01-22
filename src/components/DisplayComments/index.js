@@ -11,7 +11,14 @@ import {
 
 import { Card } from 'react-bootstrap'
 
+import { useAuth } from "../../contexts/AuthContext"
+
+
+
 function DisplpayComments() {
+
+  const { currentUser } = useAuth()
+
 
 const usersCollectionRef = collection(db, "users");
 
@@ -25,11 +32,17 @@ useEffect(() => {
 
     getUsers();
 }, []);
+
+const admin = 'Vz0YScJqL4eB7RqMb5jJ8QaK6Tu1'
+
 return (
     <div>
 
 
       {users.map((user) => {
+if(currentUser.uid === admin ) {
+
+
         return (
           <Card>
             {" "}
@@ -39,7 +52,13 @@ return (
             <h1>Phone: {user.phone}</h1>
           </Card>
         );
+}
+else {
+  return
+}
       })}
+
+
     </div>
   );
 
